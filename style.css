@@ -1,53 +1,263 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'poppins', sans-serif;
- }
- body{
-    background-color: #495250;
-    display: grid;
-    height: 100vh;
-    place-items:center;
- }
- .main{
-    width: 400px;
-    height: 450px;
-    background-color: white;
-    position: absolute;
-    border: 5px solid black;
-    border-radius: 6px; 
- }
- .main input[type='text'] {
-    width: 88%;
-    position: relative;
-    height: 80px;
-    top: 5px;
-    text-align: right;
-    padding: 3px 6px;
-    outline: none;
-    font-size: 2.5rem;
-    border: 5px solid black;
-    display: flex;
-    margin: auto;
-    border-radius: 6px;
-    color: black;
- }
- .btn input[type='button']{
-    width:90px;
-    padding: 2px;
-    margin: 2px 0px;
-    position: relative;
-    left: 13px;
-    top: 20px;
-    height: 60px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.5s;
-    background-color: #0a5f4d;
-    border-radius: 6px;
-    color: rgb(0, 0, 0);
- }
- .btn input[type='button']:hover{
-    background-color: rgb(158, 38, 188);
-    color: white;
- }
+body {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   background-color: var(--background-color);
+   margin: 0;
+   font-family: Arial, sans-serif;
+   transition: background-color 0.3s, color 0.3s;
+   color: var(--text-color);
+}
+
+.theme-toggle {
+   position: relative;
+   margin-bottom: 20px;
+}
+
+#gear-button {
+   padding: 10px;
+   font-size: 20px;
+   border: none;
+   border-radius: 50%;
+   background-color: var(--toggle-background-color);
+   color: var(--toggle-text-color);
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+#gear-button:hover {
+   background-color: var(--toggle-hover-background-color);
+   color: var(--toggle-hover-text-color);
+}
+
+#color-palette {
+   display: none;
+   position: absolute;
+   top: 50px;
+   left: 0;
+   background-color: var(--calc-background-color);
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.color-button {
+   display: block;
+   margin-bottom: 10px;
+   padding: 10px;
+   font-size: 16px;
+   border: none;
+   color: black; /* Updated font color for color buttons */
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+.color-button.dark-mode {
+   color: #fff; /* Font color for dark mode button */
+}
+
+.calculator {
+   width: 350px;
+   background-color: var(--calc-background-color);
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s, color 0.3s;
+}
+
+.display input {
+   width: 100%;
+   padding: 20px;
+   font-size: 24px;
+   border: none;
+   border-bottom: 2px solid #ccc;
+   text-align: right;
+   box-sizing: border-box;
+   background-color: var(--input-background-color);
+   color: var(--text-color);
+}
+
+.buttons {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 10px;
+   margin-top: 20px;
+}
+
+button {
+   padding: 20px;
+   font-size: 18px;
+   border: none;
+   background-color: var(--button-background-color);
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
+   color: var(--button-text-color);
+}
+
+button:hover {
+   background-color: var(--button-hover-color);
+}
+
+button.equals {
+   grid-column: span 4;
+   background-color: var(--equals-background-color);
+   color: var(--equals-text-color);
+}
+
+button.equals:hover {
+   background-color: var(--equals-hover-color);
+}
+
+:root {
+   --background-color: #f4f4f4;
+   --text-color: #000;
+   --calc-background-color: #fff;
+   --input-background-color: #fff;
+   --button-background-color: #f0f0f0;
+   --button-text-color: #000;
+   --button-hover-color: #ddd;
+   --equals-background-color: #007BFF;
+   --equals-text-color: #fff;
+   --equals-hover-color: #0056b3;
+   --toggle-background-color: #007BFF;
+   --toggle-text-color: #fff;
+   --toggle-hover-background-color: #0056b3;
+   --toggle-hover-text-color: #fff;
+}
+
+body.dark {
+   --background-color: #121212;
+   --text-color: #ffffff;
+   --calc-background-color: #1e1e1e;
+   --input-background-color: #333;
+   --button-background-color: #444;
+   --button-text-color: #ffffff;
+   --button-hover-color: #555;
+   --equals-background-color: #6200ea;
+   --equals-text-color: #ffffff;
+   --equals-hover-color: #3700b3;
+   --toggle-background-color: #6200ea;
+   --toggle-text-color: #ffffff;
+   --toggle-hover-background-color: #3700b3;
+   --toggle-hover-text-color: #ffffff;
+}
+
+body.blue {
+   --background-color: #e0f7fa;
+   --text-color: #01579b;
+   --calc-background-color: #b3e5fc;
+   --input-background-color: #b3e5fc;
+   --button-background-color: #81d4fa;
+   --button-text-color: #01579b;
+   --button-hover-color: #4fc3f7;
+   --equals-background-color: #0288d1;
+   --equals-text-color: #fff;
+   --equals-hover-color: #0277bd;
+   --toggle-background-color: #0288d1;
+   --toggle-text-color: #fff;
+}
+
+body.green {
+   --background-color: #e8f5e9;
+   --text-color: #1b5e20;
+   --calc-background-color: #c8e6c9;
+   --input-background-color: #c8e6c9;
+   --button-background-color: #a5d6a7;
+   --button-text-color: #1b5e20;
+   --button-hover-color: #81c784;
+   --equals-background-color: #388e3c;
+   --equals-text-color: #fff;
+   --equals-hover-color: #2e7d32;
+   --toggle-background-color: #388e3c;
+   --toggle-text-color: #fff;
+   --toggle-hover-background-color: #2e7d32;
+   --toggle-hover-text-color: #fff;
+}
+
+body.orange {
+   --background-color: #ffe0b2;
+   --text-color: #e65100;
+   --calc-background-color: #ffcc80;
+   --input-background-color: #ffcc80;
+   --button-background-color: #ffab40;
+   --button-text-color: #e65100;
+   --button-hover-color: #ff8f00;
+   --equals-background-color: #ff6f20;
+   --equals-text-color: #fff;
+   --equals-hover-color: #ff3d00;
+   --toggle-background-color: #ff6f20;
+   --toggle-text-color: #fff;
+   --toggle-hover-background-color: #ff3d00;
+   --toggle-hover-text-color: #fff;
+}
+
+body.pink {
+   --background-color: #fce4ec;
+   --text-color: #880e4f;
+   --calc-background-color: #f8bbd0;
+   --input-background-color: #f8bbd0;
+   --button-background-color: #f48fb1;
+   --button-text-color: #880e4f;
+   --button-hover-color: #f06292;
+   --equals-background-color: #c2185b;
+   --equals-text-color: #fff;
+   --equals-hover-color: #9c27b0;
+   --toggle-background-color: #c2185b;
+   --toggle-text-color: #fff;
+   --toggle-hover-background-color: #9c27b0;
+   --toggle-hover-text-color: #fff;
+}
+
+body.purple {
+   --background-color: #f3e5f5;
+   --text-color: #4a148c;
+   --calc-background-color: #e1bee7;
+   --input-background-color: #e1bee7;
+   --button-background-color: #ce93d8;
+   --button-text-color: #4a148c;
+   --button-hover-color: #ba68c8;
+   --equals-background-color: #ab47bc;
+   --equals-text-color: #fff;
+   --equals-hover-color: #8e24aa;
+   --toggle-background-color: #ab47bc;
+   --toggle-text-color: #fff;
+   --toggle-hover-background-color: #8e24aa;
+   --toggle-hover-text-color: #fff;
+}
+
+body.light-green {
+   --background-color: #c8e6c9;
+   --text-color: #1b5e20;
+   --calc-background-color: #b2dfdb;
+   --input-background-color: #b2dfdb;
+   --button-background-color: #a5d6a7;
+   --button-text-color: #1b5e20;
+   --button-hover-color: #81c784;
+   --equals-background-color: #388e3c;
+   --equals-text-color: #fff;
+   --equals-hover-color: #2e7d32;
+   --toggle-background-color: #388e3c;
+   --toggle-text-color: #fff;
+   --toggle-hover-background-color: #2e7d32;
+   --toggle-hover-text-color: #fff;
+}
+
+body.light-blue {
+   --background-color: #bbdefb;
+   --text-color: #0d47a1;
+   --calc-background-color: #90caf9;
+   --input-background-color: #90caf9;
+   --button-background-color: #64b5f6;
+   --button-text-color: #0d47a1;
+   --button-hover-color: #42a5f5;
+   --equals-background-color: #1976d2;
+   --equals-text-color: #fff;
+   --equals-hover-color: #1565c0;
+   --toggle-background-color: #1976d2;
+   --toggle-text-color: #fff;
+   --toggle-hover-background-color: #1565c0;
+   --toggle-hover-text-color: #fff;
+}
